@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css">
+
+    <link href="../css/common.css" rel="stylesheet">
+    <link href="../css/chatbot.css" rel="stylesheet">
+    <script type="module" src="../js/chatbot.js" defer></script>
+</head>
+
+<body>
+    <main class="main">
+        <div id="chatbot-container">
+            <div class="actionBox side" id="top">
+                <div class="top-section">
+
+                    <div>
+                        <span id="cally" class="lnr lnr-mustache"></span>
+                        <p>캘리에게 물어보세요</p>
+                    </div>
+                    <div>
+                        <span id="setting" class="lnr lnr-cog"></span>
+                        <span id="down" class="lnr lnr-chevron-down"></span>
+                        <span id="close" class="lnr lnr-cross-circle"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="actionBox_wrap">
+                <ul id="response">
+                    <!-- <li>사용자가 쓴 문구~~</li> -->
+                    <!-- <div class="callyResponse"></div> -->
+                </ul>
+
+
+                <div class="actionBox" id="chatPart">
+                    <!-- 옵션 띄우기 1. 일정조회 2. 일정 추가 3.일정 추천 4.직접입력 -->
+                    <!-- 대화 업데이트는 input값에 따라 추가됨 -->
+                    <div>
+                        
+                        <div id="help">무엇을 도와드릴까요?</div>
+                        <ul>
+                            <li id="option-one"><button>1. 일정 조회</button><span>최근 일주일간 이력조회</span></li>
+                            <li id="option-two"><button>2. 일정 추가</button></li>
+                            <li id="option-three"><button>3. 일정 추천</button><span>일정을 추천받아 보세요</Span></li>
+                            <li id="option-four"><button>4. 직접 입력</button><span>'처음으로' 입력시 처음으로 돌아갑니다</Span></li>
+                        </ul>
+                    </div>
+                </div>
+           
+            </div>
+      
+
+            <div class="actionBox side" id="input">
+                <form>
+                    <input type="text" placeholder="메세지를 입력하세요">
+                </form>
+                <span id="arrow" class="lnr lnr-arrow-up hidden"></span>
+            </div>
+        </div>
+
+    </main>
+</body>
+
+</html>

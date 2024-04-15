@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>포피캘린더</title>
+    <link
+    rel="icon"
+    href="./img/favicon.png"
+    type="image/png" />
+    <meta name="”description”" content="”캘린더로" 일정관리를 도와드려요!” />
+    <link href="./css/common.css" rel="stylesheet" />
+    <link href="./css/main.css" rel="stylesheet" />
+    <link href="../css/detailList.css" rel="stylesheet" />
+    <link href="../css/chatbot.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
+    />
+    <script type="module" src="../js/app.js" defer></script>
+
+    <script type="module" src="../js/taskData.js" defer></script>
+    <script type="module" src="../js/detailList.js" defer></script>
+    <script type="module" src="../js/addTaskModal.js" defer></script>
+    <script type="module" src="../js/detailListModify.js" defer></script>
+    <script type="module" src="../js/chatbot.js" defer></script>
+  </head>
+
+  <body>
+    <!-- 좌측 하단 고정 메뉴 -->
+    <div></div>
+    <!-- ============================= 메인 캘린더 영역 ============================= -->
+    <main id="calendarMain" class="main">
+      <!-- 캘린더 영역 -->
+
+      <div class="container">
+        <div class="header">
+          <!-- 헤더 년, 월 텍스트부분  -->
+          <div class="yearMonth"></div>
+          <!-- 달 이동 버튼 -->
+          <div class="nav">
+            <button id="prevBtn" class="nav-btn go-prev">&lt;</button>
+            <!-- <button class="nav-btn go-today" onclick="goToday()">today</button> -->
+            <button id="nextBtn" class="nav-btn go-next" >&gt;</button>
+          </div>
+   
+        </div>
+        <!-- 캘린더 메인 날짜 부분 -->
+        <div class="mainDate">
+          <!-- 요일 -->
+          <div class="days">
+            <div class="day">Sun</div>
+            <div class="day">Mon</div>
+            <div class="day">Tue</div>
+            <div class="day">Wed</div>
+            <div class="day">Thu</div>
+            <div class="day">Fri</div>
+            <div class="day">Sat</div>
+          </div>
+          <!-- 날짜 -->
+          <div class="dates"></div>
+        </div>
+      </div>
+    </main>
+    <!-- ============================= 고정 버튼 영역 ============================= -->
+    <div class="fixed_btns">
+      <ul class="fixed_btns-list">
+        <li id="add_task_by_ai">
+          <b>✨ AI채팅</b>
+          <span>
+            AI추천을 통해<br />
+            일정을 추가해보세요!
+          </span>
+        </li>
+        <li id="add_task_by_user">
+          <b>✏️ 일정추가</b>
+          <span>
+            계획하신 일을<br />
+            직접 추가해보세요!
+          </span>
+        </li>
+      </ul>
+      <button>
+        <p><span class="lnr lnr-cross"></span></p>
+      </button>
+    </div>
+   
+    <!-- ============================= 투두리스트 디테일 모달 영역 ============================= -->
+    <div id="task_modal">
+      <div class="task_modal-head">
+        <h2><b id="h2Date" class="date">04/04</b> 일정을 확인해 보세요</h2>
+        <button class="close_btn"><span class="lnr lnr-cross"></span></button>
+      </div>
+      <div class="task_modal-body">
+        <!-- 일정 리스트 -->
+        <div class="task_list_wrap">
+          <ul id="task_list">
+            <li class="task_list-item-nothing">일정이 없습니다.</li>
+            <!-- <li class="task_list-item rest">
+                <span class="time">12:00</span>
+                <span class="label"></span>
+                <span class="text">할 일 1</span>
+              </li>
+              <li class="task_list-item task">
+                <span class="time">13:00</span>
+                <span class="label"></span>
+                <span class="text">할 일 2</span>
+              </li>
+              <li class="task_list-item exercise">
+                <span class="time">14:00</span>
+                <span class="label"></span>
+                <span class="text">할 일 3</span>
+              </li> -->
+          </ul>
+          <div class="add_task_wrap">
+            <button id="add_task">
+              <p>
+                <span class="lnr lnr-cross"></span>
+              </p>
+            </button>
+          </div>
+        </div>
+        <!-- 수정 모달 -->
+        <div id="edit_box">
+          <div class="edit_dep">
+            <div class="edit_box-list">
+              <p class="date">04.04</p>
+              <p class="time">12:24</p>
+            </div>
+            <div class="edit_box-tit">
+              <p class="text">
+                <span></span>
+                <button class="rewrite_btn">
+                  <span class="lnr lnr-pencil"></span>
+                </button>
+              </p>
+              <p class="input">
+                <input class="rewrite_input" />
+                <span>
+                  <button class="check_btn">
+                    <span class="lnr lnr-checkmark-circle"></span>
+                  </button>
+                  <button class="cancel_btn">
+                    <span class="lnr lnr-cross-circle"></span>
+                  </button>
+                </span>
+              </p>
+            </div>
+          </div>
+
+          <button id="del_btn"><span class="lnr lnr-trash"></span></button>
+        </div>
+        <script></script>
+      </div>
+    </div>
+    <!-- 일정 추가 모달 -->
+    <div id="add_task_modal">
+      <p class="add_task-head">
+        <input type="text" placeholder="추가할 일을 입력하세요" />
+        <button class="check_btn">
+          <span class="lnr lnr-checkmark-circle"></span>
+        </button>
+        <button class="close_btn">
+          <span class="lnr lnr-cross-circle"></span>
+        </button>
+      </p>
+      <div class="add_task-body">
+        <p>
+          <label>
+            <input type="radio" name="category" id="task" />
+            <span>일</span>
+          </label>
+          <label>
+            <input type="radio" name="category" id="rest" />
+            <span>휴식</span>
+          </label>
+          <label>
+            <input type="radio" name="category" id="exercise" />
+            <span>운동</span>
+          </label>
+        </p>
+        <p class="input_wrap">
+          <input type="date" id="date_input" />
+          <input type="time" id="time_input" />
+        </p>
+      </div>
+    </div>
+    <!-- ============================= 챗봇 모달 영역 ============================= -->
+    <div id="chatbot-container">
+      <div class="actionBox side" id="top">
+          <div class="top-section">
+
+              <div>
+                  <span id="cally" class="lnr lnr-mustache"></span>
+                  <p>캘리에게 물어보세요</p>
+              </div>
+              <div>
+                  <span id="setting" class="lnr lnr-cog"></span>
+                  <span id="down" class="lnr lnr-chevron-down"></span>
+                  <span id="close" class="lnr lnr-cross-circle"></span>
+              </div>
+          </div>
+      </div>
+      <div class="actionBox_wrap">
+          <ul id="response">
+              <!-- <li>사용자가 쓴 문구~~</li> -->
+              <!-- <div class="callyResponse"></div> -->
+          </ul>
+
+
+          <div class="actionBox" id="chatPart">
+              <!-- 옵션 띄우기 1. 일정조회 2. 일정 추가 3.일정 추천 4.직접입력 -->
+              <!-- 대화 업데이트는 input값에 따라 추가됨 -->
+              <div>
+                  
+                  <div id="help">무엇을 도와드릴까요?</div>
+                  <ul>
+                      <li id="option-one"><button>일정 조회</button><span>입력받은 날짜의 주변 일정조회</span></li>
+                      <li id="option-three"><button>일정 추천</button><span>일정을 추천받아 보세요</Span></li>
+                        <li id="option-four"><button>직접 입력</button><span></Span></li>
+                          <li id="option-two"><button>처음으로 이동</button></li>
+                  </ul>
+              </div>
+          </div>
+     
+      </div>
+
+
+      <div class="actionBox side" id="input">
+          <form>
+              <input type="text" placeholder="메세지를 입력하세요">
+          </form>
+          <span id="arrow" class="lnr lnr-arrow-up hidden"></span>
+      </div>
+  </div>
+  <script>
+    const $fixedBtn = document.querySelector(".fixed_btns");
+    $fixedBtn.querySelector("button").addEventListener("click", function () {
+      $fixedBtn.classList.toggle("is-active");
+    });
+    [...$fixedBtn.querySelectorAll('li')].forEach($li=>{
+      $li.addEventListener('click',function(){
+        $li.parentElement.parentElement.classList.remove('is-active')
+
+      })
+    })
+    const $addTaskByAIBtn = document.getElementById('add_task_by_ai')
+    const $chatbotModal = document.getElementById('chatbot-container')
+    $addTaskByAIBtn.addEventListener('click',function(){
+      $chatbotModal.classList.add('is-active')
+    })
+  </script>
+  </body>
+</html>

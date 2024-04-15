@@ -1,0 +1,321 @@
+/* .main{
+    position: relative;
+    
+    display: flex;
+    justify-content: end;
+    
+    width: 1200px;
+    min-height: 100vh;
+    
+    background-color: darkgreen;
+    
+    font-size: 16px;
+} */
+
+
+/* chatbot-container 좌측에 위치하게 만듬 */
+#chatbot-container {
+    position: fixed;
+    right: calc((100% - 1400px)/2);
+
+    width: 450px;
+
+    border-radius: 15px;
+    background-color: #f8f8f8;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    height: 90vh;
+
+    opacity: 0;
+    bottom: -100%;
+}
+    /* bottom: 0; */
+#chatbot-container.is-active {
+    opacity: 1;
+    bottom: revert-layer;
+    transition: opacity 0.8s ease-in;
+}
+
+.actionBox_wrap {
+    height: calc(100% - 140px);
+    overflow-y: scroll;
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+/* 상단 중간 하단으로 나눈 후 css 적용 */
+#chatbot-container .actionBox#top {
+    color: #F2F2F2;
+    border-radius: 15px 15px 0px 0px;
+}
+
+/* input, top 사이즈 조절 */
+#chatbot-container .actionBox#top,
+#chatbot-container .actionBox#input {
+    height: 70px;
+    background-color: #393a3a;
+
+}
+
+
+
+/* =============================== */
+/* 캘리에게 물어보세요 파트 */
+#chatbot-container .actionBox.side#top {
+    color: #F2F2F2;
+    display: flex;
+    justify-content: space-evenly;
+
+}
+
+#chatbot-container .actionBox.side#top .top-section {
+    width: 100%;
+    font-size: 20px;
+    display: flex;
+    justify-content: space-between;
+}
+
+#chatbot-container .actionBox.side#top .top-section div {
+    display: flex;
+    padding: 10px;
+    align-items: center;
+    font-weight: 500;
+}
+
+#chatbot-container .actionBox.side#top .top-section span {
+    font-size: 30px;
+    padding: 10px;
+    font-weight: 500;
+}
+
+#chatbot-container .actionBox.side#top .top-section span:hover {
+    font-weight: 700;
+
+}
+
+
+/* =============================== */
+/* 무엇을 도와드릴까요? */
+/* 초기 채팅 창 */
+#chatbot-container .actionBox#chatPart {
+    background-color: #F2F2F2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
+}
+
+#chatbot-container .actionBox#chatPart #help {
+    margin-bottom: 18px;
+    text-indent: 5px;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+/* 선택 옵션들 */
+
+#chatbot-container .actionBox#chatPart ul {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+
+}
+
+#chatbot-container .actionBox#chatPart li {
+    margin-bottom: 10px;
+    display: flex;
+    align-items: baseline;
+}
+
+#chatbot-container .actionBox#chatPart li button {
+    background: #F2F2F2;
+    border: 1px solid #40403e;
+    color: #40403e;
+    padding: 9px 19px 11px 16px;
+    border-radius: 500px;
+    width: fit-content;
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
+    font-size: 16px;
+    word-spacing: 3px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+}
+
+#chatbot-container .actionBox#chatPart li span {
+    font-size: 13px;
+    color: #40403e90;
+    padding-left: 9px;
+}
+
+#chatbot-container .actionBox#chatPart li:hover button {
+    background-color: #40403e;
+    border-color: #40403e;
+    color: #fff;
+    transition: 0.2s;
+}
+
+/* 채팅 */
+/* 사용자가 입력한 공간 */
+#chatbot-container .actionBox_wrap #response {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: end;
+    position: relative;
+}
+
+#chatbot-container .actionBox_wrap #response li {
+    background-color: #888c8c;
+    color: #fff;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+
+    overflow: auto;
+
+    font-size: 16px;
+
+    max-width: 400px;
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 캘리의 답장 */
+#chatbot-container .actionBox_wrap #response div.callyResponse {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    background-color: #f2f2f2;
+    color: #40403e;
+    border-radius: 20px;
+    padding: 20px;
+    margin: 20px;
+
+    font-size: 16px;
+
+    width: 300px;
+    box-shadow: 0 0 13px rgba(0, 0, 0, 0.2);
+    margin-right: auto;
+}
+
+input[type=date] {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18px;
+    color: #40403E;
+    width: 138px;
+}
+
+input[type=time] {
+    font-family: 'Noto Sans', sans-serif;
+    font-size: 18px;
+    color: #40403E;
+    width: 95px;
+}
+
+#chatbot-container .actionBox_wrap #response div.callyResponse input{
+    /* width: calc((100% - 20px)/2); */
+    border: solid 2px #959494;
+    border-radius: 8px;
+    padding: 5px;
+    margin-top: 10px;
+}
+#confirm{
+    border: solid 2px #959494;
+    border-radius: 8px;
+    padding: 5px;
+    margin-top: 10px;
+    width: 240px;
+}
+#confirm:hover{
+    background-color: #888c8c;
+    color: #fff;
+}
+ #categoryOptions button{
+    border: solid 2px #959494;
+    border-radius: 8px;
+    padding: 5px;
+    margin: 10px 10px;
+    width: 50px;
+ }
+ button#rest:hover{
+ background-color: rgba(232, 237, 186, 1); 
+ }
+ button#task:hover{
+  background-color: rgba(233, 97, 87, 0.5); 
+ }
+ button#exercise:hover{
+  background-color: rgba(181, 214, 246, 1);
+
+ }
+ button#rest.checkedCt{
+    background-color: rgba(232, 237, 186, 1); 
+ }
+ button#task.checkedCt{
+    background-color: rgba(233, 97, 87, 0.5); 
+}
+ button#exercise.checkedCt{
+  background-color: rgba(181, 214, 246, 1);
+ }
+/* =============================== */
+/* input section */
+/* input박스 하단 곡률 조정 */
+
+#chatbot-container .actionBox.side#input {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+
+    border-radius: 0px 0px 15px 15px;
+}
+
+#chatbot-container .actionBox.side#input input {
+    font-size: 20px;
+    color: #F2F2F2;
+    width: 350px;
+}
+
+#chatbot-container .actionBox.side#input #arrow {
+    font-size: 25px;
+    padding: 8px;
+    font-weight: 700;
+    background-color: #fff;
+    border-radius: 30px;
+
+    opacity: 1;
+    transition: 0.7s;
+}
+
+#chatbot-container .actionBox.side#input #arrow.hidden {
+    opacity: 0;
+}
+
+#confirmBtnRecommend{
+    display: flex;
+    justify-content: space-evenly;
+
+    margin-top: 10px;
+}
+
+#confirmBtnRecommend button{
+    border-radius: 150px;
+    padding: 10px 15px;
+}
+#likeBtn:hover{
+    background-color: #7098ea;
+    color: #fff;
+}
+#disBtn:hover{
+    background-color: #f49191;
+    color: #fff;
+}
+
+

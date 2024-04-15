@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>캘린더</title>
+
+    <meta name="”description”" content="”캘린더로" 일정관리를 도와드려요!” />
+    <link href="../css/common.css" rel="stylesheet" />
+    <link href="../css/detailList.css" rel="stylesheet" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.linearicons.com/free/1.0.0/icon-font.min.css"
+    />
+    <script type="module" src="../js/taskData.js" defer></script>
+    <script type="module" src="../js/detailList.js" defer></script>
+    <script type="module" src="../js/addTaskModal.js" defer></script>
+    <script type="module" src="../js/detailListModify.js" defer></script>
+  </head>
+  <body>
+ 
+
+    <!-- 메인 -->
+    <main class="main">
+      <!-- 일정 모달 -->
+      <div id="task_modal">
+        <div class="task_modal-head">
+          <h2><b id="h2Date" class="date">04/04</b> 일정을 확인해 보세요</h2>
+          <button class="close_btn"><span class="lnr lnr-cross"></span></button>
+        </div>
+        <div class="task_modal-body">
+          <!-- 일정 리스트 -->
+          <div class="task_list_wrap">
+            <ul id="task_list">
+              <li class="task_list-item nothing">일정이 없습니다.</li>
+              <!-- <li class="task_list-item rest">
+                <span class="time">12:00</span>
+                <span class="label"></span>
+                <span class="text">할 일 1</span>
+              </li>
+              <li class="task_list-item task">
+                <span class="time">13:00</span>
+                <span class="label"></span>
+                <span class="text">할 일 2</span>
+              </li>
+              <li class="task_list-item exercise">
+                <span class="time">14:00</span>
+                <span class="label"></span>
+                <span class="text">할 일 3</span>
+              </li> -->
+            </ul>
+            <div class="add_task_wrap">
+              <button id="add_task">
+                <p>
+                  <span class="lnr lnr-cross"></span>
+                </p>
+              </button>
+            </div>
+          </div>
+          <!-- 수정 모달 -->
+          <div id="edit_box">
+            <div class="edit_dep">
+              <div class="edit_box-list">
+                <p class="date">04.04</p>
+                <p class="time">12:24</p>
+              </div>
+              <div class="edit_box-tit">
+                <p class="text">
+                  <span></span>
+                  <button class="rewrite_btn">
+                    <span class="lnr lnr-pencil"></span>
+                  </button>
+                </p>
+                <p class="input">
+                  <input class="rewrite_input" />
+                  <span>
+                    <button class="check_btn">
+                      <span class="lnr lnr-checkmark-circle"></span>
+                    </button>
+                    <button class="cancel_btn"><span class="lnr lnr-cross-circle"></span></button>
+                  </span>
+                </p>
+              </div>
+            </div>
+           
+            <button id="del_btn"><span class="lnr lnr-trash"></span></button>
+
+          </div>
+          <script>
+     
+          </script>
+        </div>
+      </div>
+
+      <!-- 일정 추가 모달 -->
+      <div id="add_task_modal">
+        <p class="add_task-head">
+          <input type="text" placeholder="추가할 일을 입력하세요" />
+          <button class="check_btn"> <span class="lnr lnr-checkmark-circle"></span></button>
+          <button class="close_btn"><span class="lnr lnr-cross-circle"></span></button>
+        </p>
+        <div class="add_task-body">
+          <p>
+            <label>
+              <input type="radio" name="category" id="task" />
+              <span>일</span>
+            </label>
+            <label>
+              <input type="radio" name="category" id="rest" />
+              <span>휴식</span>
+            </label>
+            <label>
+              <input type="radio" name="category" id="exercise" />
+              <span>운동</span>
+            </label>
+          </p>
+          <p class="input_wrap">
+            <input type="date" id="date_input" />
+            <input type="time" id="time_input" />
+          </p>
+        </div>
+      </div>
+
+    </main>
+  </body>
+</html>

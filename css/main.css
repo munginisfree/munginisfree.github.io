@@ -1,0 +1,186 @@
+@import url(./reset.css);
+
+.main{
+  width: 1400px;
+  margin: 0 auto;
+}
+
+/* 루트 */
+:root {
+  --color-point-green: #b7f932;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.clearfix::after{
+  content: '';
+  display: inline-block;
+  clear: both;
+}
+
+/* 캘린더 전체 컨테이너 */
+
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+#calendarMain .container {
+  width: 1400px;
+  height: 90vh;
+  background-color: #0b0c0d;
+  padding-bottom: 46px;
+  border-radius: 20px;
+}
+
+#calendarMain .header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-right: 10px;
+}
+
+#calendarMain .yearMonth {
+  font-size: 32px;
+  color: #f2f2f2;
+  margin-left: 24px;
+  padding-top: 16px;
+}
+
+#calendarMain .nav {
+  display: flex;
+  border: 1px solid #0b0c0d;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+#calendarMain .nav-btn {
+  width: 20px;
+  height: 25px;
+  /* border: none; */
+  font-size: 14px;
+  line-height: 25px;
+  /* background-color: transparent; */
+  cursor: pointer;
+  color: #888c8c;
+  background: #40403e;
+}
+
+#calendarMain .go-today {
+  width: 65px;
+  border-left: 1px solid #0b0c0d;
+  border-right: 1px solid #0b0c0d;
+}
+
+#calendarMain .mainDate {
+  padding: 0 20px 0 20px ;
+  height: calc(100% - 100px);
+  
+}
+#calendarMain .days {
+  display: flex;
+  margin: 10px 0 0 0;
+  color: #888c8c;
+  padding: 20px 0;
+  
+}
+
+#calendarMain .day {
+  width: calc(100% / 7);
+  text-align: center;
+  color: #888c8c;
+
+  /* border-top: 1px solid #888c8c;
+  border-right: 1px solid #888c8c; */
+  font-size: 16px;
+
+}
+
+#calendarMain .dates {
+  display: flex;
+  flex-flow: row wrap;
+  height: 500px;
+  border-top: 1px solid #888c8c;
+  border-right: 1px solid #888c8c;
+  color: #0b0c0d;
+  font-size: 14px;
+  background: #f2f2f2;
+  height: calc(100% - 60px);
+}
+
+#calendarMain .date {
+  width: calc(100% / 7);
+  padding: 10px;
+  text-align: left;
+  border-bottom: 1px solid #888c8c;
+  border-left: 1px solid #888c8c;
+  cursor: pointer;
+}
+
+#calendarMain .day:nth-child(7n + 1),
+#calendarMain .date:nth-child(7n + 1) {
+  color: #D13E3E;
+}
+
+#calendarMain .day:nth-child(7n),
+#calendarMain .date:nth-child(7n) {
+  color: #396EE2;
+}
+
+
+.date.today {
+  position: relative; /* 부모 요소의 위치 설정 */
+
+}
+
+.date.today::before {
+  content: "";
+  display: block;
+  width: 25px;
+  height: 25px;
+  opacity: 0.5;
+  border-radius: 50%;
+  background-color: #888c8c;
+  position: absolute;
+  top: 9px; /* 부모 요소의 상단으로 올리기 */
+  left: calc(50% - 4px); 
+  transform: translateX(-350%); 
+  /* z-index: 1; */
+}
+
+#calendarMain .date .task_list{
+  width: 100%;
+  margin-top: 10px;
+  height: calc(100% - 30px);
+  overflow-y: scroll;
+  pointer-events: none;
+}
+#calendarMain .date .task_list li{
+  width: 100%;
+  padding: 2px 4px;
+  font-size: 14px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  background-color: #396EE2;
+  border-radius: 4px;
+  color: #0b0c0d;
+  margin-bottom: 4px;
+}
+#calendarMain .date .task_list li:last-child{
+  margin-bottom: 0;
+}
+#calendarMain .date .task_list li.task{
+  background-color: rgba(233, 97, 87, 0.5);
+
+}
+#calendarMain .date .task_list li.rest{
+  background-color: rgba(232, 237, 186, 1);
+}
+#calendarMain .date .task_list li.exercise{
+  background-color: rgba(181, 214, 246, 1);
+}

@@ -1,0 +1,81 @@
+@import url(./reset.css);
+
+.main{
+  width: 980px;
+  margin: 0 auto;
+}
+
+/* 루트 */
+:root {
+  --color-point-green: #b7f932;
+}
+
+::-webkit-scrollbar {
+  display: none;
+}
+
+.clearfix::after{
+  content: '';
+  display: inline-block;
+  clear: both;
+}
+
+
+
+.fixed_btns{
+  position: fixed;
+  left: calc((100% - 1400px)/2);
+  bottom: 5vh;
+  z-index: 10;
+}
+.fixed_btns.is-active .fixed_btns-list li{
+  opacity: 1;
+  pointer-events: all;
+  transform: translateX(0px);
+}
+
+.fixed_btns-list li{
+  padding: 6px 0 7px;
+  border-radius: 500px;
+  width: 140px;
+  background-color: #40403E;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  color: #fff;
+  text-align: center;
+  margin-bottom: 5px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(10px);
+  transition:all .6s ease-out;
+  cursor: pointer;
+
+}
+.fixed_btns-list li:nth-child(1){
+  transition-delay: .3s;
+}
+.fixed_btns-list li b{
+  padding-right: 4px;
+  font-size: 16px;
+  margin-bottom: 1px;
+}
+.fixed_btns-list li span{
+  color: #888C8C;
+  font-size: 10px;
+}
+.fixed_btns > button{
+  width: 64px;
+  height: 64px;
+  background-color: #40403E;
+  border-radius: 50%;
+  transform: rotate(45deg);
+  margin-top: 3px;
+}
+
+.fixed_btns > button>p{
+  scale: 2;
+}
+.fixed_btns > button span{
+  color: #fff;
+}
